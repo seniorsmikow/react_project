@@ -1,0 +1,48 @@
+.Navbar {
+    background-color: rgb(47, 94, 181);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 20%;
+    height: 100%;
+}
+
+.Main {
+    height: 400px;
+}
+
+.Main ul {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.Main li {
+    margin-bottom: 15px;
+}
+
+.Main a {
+    color: white;
+}
+
+.Main a:hover {
+    color: #948fab;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.Main a:focus {
+    color: #948fab;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.Main a:active {
+    color: #948fab;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}

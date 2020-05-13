@@ -1,0 +1,17 @@
+.Song {
+    width: 200px;
+    height: 100px;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.songButton {
+    margin-top: 20px;
+    width: 80px;
+    height: 35px;
+    background-color: red;
+    border-radius: 2px;
+    color: white;
+}

@@ -1,48 +1,63 @@
 .Navbar {
-    background-color: rgb(47, 94, 181);
+    background-color: #cfd8dc;
     display: flex;
     flex-direction: column;
-    padding: 30px;
-    width: 20%;
-    height: 100%;
+    padding: 60px;
+    width: 30%;
+    height: 100vh;
+    /* font-family: 'Montserrat Alternates', sans-serif; */
+    z-index: 0;
+    width: 100%;
 }
 
 .Main {
-    height: 400px;
+    height: 100%;
 }
 
 .Main ul {
-    font-size: 20px;
-    color: white;
+    font-size: 25px;
+    color: #263238;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .Main li {
     margin-bottom: 15px;
+    font-weight: 300;
 }
 
 .Main a {
-    color: white;
+    color: #263238;
 }
 
-.Main a:hover {
-    color: #948fab;
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
+.Ul a:hover {
+    color: #d6a929;
 }
 
-.Main a:focus {
-    color: #948fab;
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
+.Ul a:focus {
+    color: #d6a929;
 }
 
-.Main a:active {
-    color: #948fab;
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
+.Ul a:active {
+    color: #d6a929;
 }
+
+.Ul li:hover {
+    -webkit-transform: scaleY(1.1);
+    -ms-transform: scaleY(1.1);
+    transform: scaleY(1.1);
+}
+
+.Ul li:focus {
+    -webkit-transform: scaleY(1.1);
+    -ms-transform: scaleY(1.1);
+    transform: scaleY(1.1);
+}
+
+.Ul li:active {
+    -webkit-transform: scaleY(1.1);
+    -ms-transform: scaleY(1.1);
+    transform: scaleY(1.1);
+}
+
+

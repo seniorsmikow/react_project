@@ -1,33 +1,32 @@
 import React from 'react';
 import classes from './Main.module.css';
 import Navbar from './Navbar/Navbar';
-import { BrowserRouter, Route } from 'react-router-dom';
-import Messages from './Messages/Messages';
-import Dialogs from './Dialogs/Dialogs';
-import Posts from './Posts/Posts';
-import Music from './Music/Music';
+import { Route } from 'react-router-dom';
+import News from './News/News';
+import UsersContainer from './Users/UsersContainer';
+import ProfileContainer from './Profile/ProfileComponent';
+import LoginCompose  from '../Login/Login';
+import Posts from './Posts/newPosts';
+import Friends from './Friends/Friends';
 
-const Main = (props) => {
-
-    debugger;
+const Main = () => {
 
     return (
-        <BrowserRouter>
-            <div className={classes.Main}>
-                <Navbar />
-                    <Route path='/music/' render={ () => <Music state={props.state} dispatch={props.dispatch}
-                                                            newText={props.state.musicPage.newMusicTitle} /> } />
-                    <Route exact path='/messages/' render={Messages} />
-                    <Route  path='/dialogs/' render={ () => <Dialogs messages={props.state.dialogsPage.messages}
-                                                                        dialogs={props.state.dialogsPage.dialogs}
-                                                                        dispatch={props.dispatch} />} />
-                    <Route exact path='/posts/' render={ () => <Posts posts={props.state.postsPage.posts} 
-                                                                        newText={props.state.postsPage.inputText}
-                                                                        dispatch={props.dispatch} /> }/>
-            </div>
-        </BrowserRouter>
+        
+        <div className={classes.Main}>
+            <Navbar />
+                <Route path='/news/' render={ () => <News /> } />
+                <Route exact path='/posts/' render= {() => <Posts /> }/>
+                <Route exact path='/users/' render={ () => <UsersContainer />}/>
+                <Route path='/profile/:userId?' render={ () => <ProfileContainer />} />
+                <Route path='/Login' render={ () => <LoginCompose /> } />
+                <Route path='/Friends' render={ () => <Friends /> } />
+        </div>
+        
     )
 
 };
 
 export default Main;
+
+

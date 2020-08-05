@@ -1,21 +1,26 @@
 import React from 'react';
 import classes from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
-import Friends from './Friends/Friends';
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 
 const Navbar = () => {
     return (
-        <div className={classes.Navbar}>
-            <div className={classes.Main}>
-                <ul>
-                    <li><NavLink to="/Messages">Новости</NavLink></li>
-                    <li><NavLink to="/Posts">Посты</NavLink></li>
-                    <li><NavLink to="/Dialogs">Диалоги</NavLink></li>
-                    <li><NavLink to="/Music">Музыка</NavLink></li>
-                </ul>
-            </div>
-            <Friends />
-        </div>
+        <Hidden smDown >
+            <Grid item xl={2} lg={3} md={4} sm={12} >
+                <div className={classes.Navbar}>
+                    <div className={classes.Main}>
+                        <ul className={classes.Ul}>
+                            <li><NavLink to="/News">Новости</NavLink></li>
+                            <li><NavLink to="/Posts">Посты</NavLink></li>
+                            <li><NavLink to="/Users">Пользователи</NavLink></li>
+                            <li><NavLink to="/Profile">Профиль</NavLink></li>
+                            <li><NavLink to="/Friends">Друзья</NavLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </Grid>
+        </Hidden>
     )
 };
 

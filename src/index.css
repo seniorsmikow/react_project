@@ -18,5 +18,13 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}
 
 html, body, #root, .App {
   height: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
 }
+
+@media (max-width: 300px) {
+  ul li {
+    width: 20px;
+  }
+}
+
 

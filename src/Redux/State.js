@@ -48,7 +48,7 @@ export  let store = {
         console.log("render");
     },
 
-    updateState(observer) {
+    subscribe(observer) {
         this.renderAll = observer;
     },
 

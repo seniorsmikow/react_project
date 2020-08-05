@@ -1,18 +1,56 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './App.module.css';
-import Header from './Components/Header/Header';
+import HeaderContainer from './Components/Header/HeaderContainer';
 import Main from './Components/Main/Main';
+import {initialApp} from './Redux/app-reducer';
+import {withRouter} from 'react-router-dom';
+import {compose} from 'redux';
+import {connect} from 'react-redux';
+import Loader from './Components/Loader/Loader';
+import {Provider} from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import store from './Redux/redux-store';
 
-function App(props) {
-  
-  return (
+class AppContainer extends Component { 
+
+  componentWillMount() {
+    this.props.initialApp();
+  }
+
+  render() {
+
+    if(!this.props.initialised) {
+      return <Loader />
+    }
     
-    <div className={classes.App}>
-      <Header />
-      <Main state={props.state} dispatch={props.dispatch} />
-    </div>
-    
-  );
+    return  (<div className={classes.App}>
+              
+                  <HeaderContainer />
+                  <Main />
+                
+            </div>
+    )
+  }
 }
 
-export default App;
+let mapStateToProps = (state) => {
+  return {
+    initialised: state.app.initialised
+  };
+};
+
+let App = compose(
+  withRouter,
+  connect(mapStateToProps, {initialApp}),
+  
+)(AppContainer);
+
+let MainApp = () => {
+  return  <BrowserRouter>
+            <Provider store={store}>
+              <App />
+            </Provider>
+          </BrowserRouter>
+};
+
+export default MainApp;

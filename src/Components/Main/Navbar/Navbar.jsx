@@ -12,10 +12,8 @@ const Navbar = () => {
                     <div className={classes.Main}>
                         <ul className={classes.Ul}>
                             <li><NavLink to="/News">Новости</NavLink></li>
-                            <li><NavLink to="/Posts">Посты</NavLink></li>
                             <li><NavLink to="/Users">Пользователи</NavLink></li>
                             <li><NavLink to="/Profile">Профиль</NavLink></li>
-                            <li><NavLink to="/Friends">Друзья</NavLink></li>
                         </ul>
                     </div>
                 </div>

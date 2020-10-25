@@ -8,7 +8,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import Loader from './Components/Loader/Loader';
 import {Provider} from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import store from './Redux/redux-store';
 
 class AppContainer extends Component { 
@@ -46,11 +46,11 @@ let App = compose(
 )(AppContainer);
 
 let MainApp = () => {
-  return  <BrowserRouter>
+  return  <HashRouter>
             <Provider store={store}>
               <App />
             </Provider>
-          </BrowserRouter>
+          </HashRouter>
 };
 
 export default MainApp;

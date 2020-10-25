@@ -10,6 +10,13 @@ import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import icon from '../../../img/img_568657.png';
 import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import BackupIcon from '@material-ui/icons/Backup';
+import Popper from '@material-ui/core/Popper';
+import Typography from '@material-ui/core/Typography';
+import Fade from '@material-ui/core/Fade';
+import ProfileForm from '../../Forms/ProfileForm/ProfileForm';
+
 
 const useStyles = makeStyles({
     root: {
@@ -31,7 +38,7 @@ const useStyles = makeStyles({
         width: 275,
         marginTop: '20px',
         '&:hover': {
-            transform: 'scale(1.02)',
+            //transform: 'scale(1.02)',
             backgroundColor: '#eceff1'
         }
     },
@@ -56,17 +63,51 @@ const useStyles = makeStyles({
     elementChild: {
         marginLeft: '20px',
     },
+    addPhotoBtn: {
+        color: 'black',
+        backgroundColor: '#0091ea'
+    },
+    alertPaper: {
+        width: '280px',
+        height: '100px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: '#eeeeee'
+    },
+    alertPaperTitle: {
+        textAlign: 'center',
+        color: 'red'
+    },
+    alertPaperInput: {
+        marginTop: '15px',
+    },
 });
 
 
 
 const Profile = (props) => {
 
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [open, setOpen] = React.useState(false);
+    const [placement, setPlacement] = React.useState();
     const classes = useStyles();
+
+    const handleClick = (newPlacement) => (event) => {
+        setAnchorEl(event.currentTarget);
+        setOpen((prev) => placement !== newPlacement || !prev);
+        setPlacement(newPlacement);
+    };
 
     if(!props.profile) {
         return <Loader />
     }
+
+    const submitPhoto = event => {
+        if(event.currentTarget.files.length) {
+            props.loadProfilePhoto(event.currentTarget.files[0]);
+        }
+    };
 
     return (
         <div className={classes.root}>
@@ -80,6 +121,30 @@ const Profile = (props) => {
                     title="user icon"
                     alt="user icon"
                     />
+
+                    <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
+                        {({ TransitionProps }) => (
+                        <Fade {...TransitionProps} timeout={350}>
+                            <Paper>
+                                <Typography className={classes.typography}>
+                                    <Paper className={classes.alertPaper}>
+                                        <div className={classes.alertPaperTitle}>
+                                            Сменить фотографию (не более 10 Mb)
+                                        </div>
+                                        <input type={"file"} className={classes.alertPaperInput} onChange={submitPhoto}/>
+                                    </Paper>
+                                </Typography>
+                            </Paper>
+                        </Fade>
+                        )}
+                    </Popper>
+
+                    {
+                        props.isOwner ? <IconButton aria-label="delete" className={classes.addPhotoBtn} onClick={handleClick('top')}>
+                                            <BackupIcon />
+                                        </IconButton>
+                                    : null
+                    }
                         
                     <Divider />
                     <div className={classes.element}>
@@ -109,6 +174,7 @@ const Profile = (props) => {
                         </div>
                     </div>
                 </div>
+                <ProfileForm />
             </Paper>
         </div>
     )

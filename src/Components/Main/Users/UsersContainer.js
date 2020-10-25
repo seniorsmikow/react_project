@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {createThunkGetUsers, createThunkGetElseUsers, setTotalUsersCount,  followThunkCreator, unfollowThunkCreator} from '../../../Redux/Users-reducer';
+import {createThunkGetUsers, createThunkGetElseUsers, setTotalUsersCount,  followThunkCreator, unfollowThunkCreator} from '../../../Redux/users-reducer';
 import Users from './Users';
 import Loader from '../../Loader/Loader';
 import {compose} from 'redux';

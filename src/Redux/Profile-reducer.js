@@ -1,7 +1,8 @@
-import {  getProfileApi, getStatus, updateStatus } from '../Api/api';
+import {  getProfileApi, getStatus, updateStatus, usersAPI } from '../Api/api';
 
-const GET_PROFILE = 'GET_PROFILE';
-const GET_USER_STATUS = 'GET_USER_STATUS';
+const GET_PROFILE = 'profile/GET_PROFILE';
+const GET_USER_STATUS = 'profile/GET_USER_STATUS';
+const LOAD_USER_PHOTO = 'profile/LOAD_USER_PHOTO';
 
 const initialState = {
     profile: null,
@@ -18,28 +19,28 @@ export const profileReducer = (state = initialState, action) => {
             return {
                 ...state, status: action.status
             };
+        case LOAD_USER_PHOTO: 
+            return {
+                ...state, profile: {...state.profile, photos: action.photos}
+            };
         default:
             return state;
     }
 };
 
-export const getProfile = (profile) => {
-    return {
-        type: GET_PROFILE,
-        profile
-    };
-};
+export const getProfile = profile => ({type: GET_PROFILE, profile});
 
-export const getUserStatus = (status) => {
-    return {
-        type: GET_USER_STATUS,
-        status
-    };
-};
+export const getUserStatus = status => ({type: GET_USER_STATUS, status});
+    
+export const savePhoto = photos => ({type: LOAD_USER_PHOTO, photos});
 
 
 
 export const thunkCreatorGetProfile = (userId) => {
+
+    debugger;
+
+    
     return (dispatch) => {
         getProfileApi(userId)
         .then(response => {
@@ -66,6 +67,11 @@ export const updateUStatus = (status) => {
             }
         });
     };
+};
+
+export const loadProfilePhoto = photoFile => async dispatch => {
+    let data = await usersAPI.savePhoto(photoFile);
+    dispatch(savePhoto(data.data.photos));
 };
 
 export default profileReducer;

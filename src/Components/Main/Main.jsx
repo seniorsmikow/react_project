@@ -6,8 +6,6 @@ import News from './News/News';
 import UsersContainer from './Users/UsersContainer';
 import ProfileContainer from './Profile/ProfileComponent';
 import LoginCompose  from '../Login/Login';
-import Posts from './Posts/newPosts';
-import Friends from './Friends/Friends';
 
 const Main = () => {
 
@@ -16,11 +14,9 @@ const Main = () => {
         <div className={classes.Main}>
             <Navbar />
                 <Route path='/news/' render={ () => <News /> } />
-                <Route exact path='/posts/' render= {() => <Posts /> }/>
                 <Route exact path='/users/' render={ () => <UsersContainer />}/>
                 <Route path='/profile/:userId?' render={ () => <ProfileContainer />} />
                 <Route path='/Login' render={ () => <LoginCompose /> } />
-                <Route path='/Friends' render={ () => <Friends /> } />
         </div>
         
     )

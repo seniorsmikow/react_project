@@ -3,16 +3,16 @@ import * as axios from 'axios';
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY": "be25bc47-78e9-4634-b668-90794e8b62b9"},
+    headers: {"API-KEY": "141828eb-3df1-4887-9f23-4db2de9814c8"},
 });
 
 
 export const getUsers = (currentPage, pageSize) => {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+    return instance.get(`users?page=${currentPage}&count=${pageSize}`);
 };
 
 export const getElseUsers = (currentPage, pageSize) => {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+    return instance.get(`users?page=${currentPage}&count=${pageSize}`);
 };
 
 export const getProfileApi = (userId) => {
@@ -46,5 +46,14 @@ export const usersAPI = {
     },
     unfollowApi(userId) {
         return instance.delete(`follow/` + userId);
+    },
+    savePhoto(photoFile) {
+        let formData = new FormData();
+        formData.append("image", photoFile);
+        return instance.put(`profile/photo`, formData, {
+            headers: {
+                'Content-type': 'multipart/form-data'
+            }
+        }).then(res => res.data);
     }
-}
+};

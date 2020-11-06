@@ -24,11 +24,11 @@ it('new post incremented', () => {
 
 it('new post text changed', () => {
 
-    let action = addPost('opa opa');
+    let action = addPost('new post');
 
     let newState = postsReducer(state, action);
 
-    expect(newState.posts[5].text).toBe("opa opa");
+    expect(newState.posts[5].text).toBe("new post");
 });
 
 it('delete post', () => {

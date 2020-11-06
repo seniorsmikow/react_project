@@ -1,6 +1,5 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import postsReducer from './posts-reducer';
-import dialogsReducer from './dialogs-reducer';
 import usersReducer from './users-reducer';
 import profileReducer from './profile-reducer';
 import authReducer from './auth-reducer';
@@ -10,7 +9,6 @@ import { reducer as formReducer } from 'redux-form';
 
 let reducersBuild = combineReducers({
     postsPage: postsReducer,
-    dialogsPage: dialogsReducer,
     usersPage: usersReducer,
     profilePage: profileReducer,
     auth: authReducer,

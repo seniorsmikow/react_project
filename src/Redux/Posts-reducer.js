@@ -17,7 +17,7 @@ const postsReducer = (state = initialState, action) => {
         {
             return {
                 ...state,
-                posts: [...state.posts, {text: action.postText, like: "1488"}]
+                posts: [...state.posts, {text: action.postText, like: "15"}]
             };
         }
         case DELETE_POST:

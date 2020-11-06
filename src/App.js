@@ -3,7 +3,7 @@ import classes from './App.module.css';
 import HeaderContainer from './Components/Header/HeaderContainer';
 import Main from './Components/Main/Main';
 import {initialApp} from './Redux/app-reducer';
-import {withRouter} from 'react-router-dom';
+import { withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import Loader from './Components/Loader/Loader';

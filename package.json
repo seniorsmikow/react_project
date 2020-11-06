@@ -1,7 +1,7 @@
 {
   "name": "social_network",
   "version": "0.1.0",
-  "homepage": "https://seniorsmikow.github.io/react_project",
+  "homepage": "https://ilikephoto.ru",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "1.x",
